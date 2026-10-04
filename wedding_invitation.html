@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1a1512">
+    <title>دعوة زفاف أنيقة - Baraa & Salma</title>
+
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
+    <link rel="dns-prefetch" href="https://res.cloudinary.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700&family=Reem+Kufi:wght@400;600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FDFBF7',
+                        gold: '#D4AF37',
+                        deepRose: '#8C6262',
+                        vintageDark: '#2C2623',
+                        warmBrown: '#6B4E3D'
+                    },
+                    fontFamily: {
+                        amiri: ['Amiri', 'serif'],
+                        kufi: ['Reem Kufi', 'sans-serif'],
+                        cairo: ['Cairo', 'sans-serif'],
+                        vibes: ['Great Vibes', 'cursive'],
+                        playfair: ['Playfair Display', 'serif'],
+                        cormorant: ['Cormorant Garamond', 'serif'],
+                        garamond: ['EB Garamond', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html,
+        body {
+            height: 100%;
+            overscroll-behavior: none;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #1a1512;
+            color: #FDFBF7;
+            overflow: hidden;
+            min-height: 100dvh;
+        }
+
+        .video-container {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            z-index: 0;
+            overflow: hidden;
+            background: #1a1512;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-container video,
+        .video-container canvas {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            filter: brightness(0.98) contrast(1.02) saturate(0.98);
+        }
+
+        .text-area {
+            position: fixed;
+            top: 22%;
+            left: 8%;
+            right: 8%;
+            height: 48%;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 4%;
+        }
+
+        .gold-text {
+            color: #B8941F;
+            text-shadow:
+                0 1px 2px rgba(255, 255, 255, 0.7),
+                0 2px 12px rgba(184, 148, 31, 0.3);
+        }
+
+        .gold-deep-shine {
+            background: linear-gradient(135deg,
+                    #8B6F1A 0%,
+                    #C9A227 30%,
+                    #F4E5A1 50%,
+                    #D4AF37 70%,
+                    #8B6F1A 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: #8B6F1A;
+            filter:
+                drop-shadow(0 1px 1px rgba(0, 0, 0, 0.35)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25)) drop-shadow(0 3px 12px rgba(184, 148, 31, 0.5));
+            animation: goldShine 5s linear infinite;
+            line-height: 1.6 !important;
+            padding: 0.15em 0.1em 0.25em 0.1em;
+            display: inline-block;
+            overflow: visible;
+        }
+
+        @keyframes goldShine {
+            0% {
+                background-position: 0% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        .brown-text {
+            color: #6B4E3D;
+            text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+        }
+
+        .rose-text {
+            color: #8C6262;
+            text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+        }
+
+        .date-classic {
+            font-family: 'Cormorant Garamond', 'EB Garamond', serif;
+            color: #5A3E2B;
+            font-weight: 500;
+            font-style: italic;
+            letter-spacing: 0.15em;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+        }
+
+        .step-transition {
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-enter {
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        .fade-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scene-fade {
+            transition: opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 1.4s cubic-bezier(0.4, 0, 0.2, 1),
+                filter 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scene-hidden {
+            opacity: 0;
+            transform: translateY(12px);
+            filter: blur(6px);
+            pointer-events: none;
+        }
+
+        .scene-visible {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+            pointer-events: auto;
+        }
+
+        .grow-in {
+            opacity: 0;
+            transform: scale(0);
+            transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .grow-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .cursor::after {
+            content: '|';
+            color: #B8941F;
+            font-weight: 300;
+            margin-right: 2px;
+            animation: blink 0.9s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .divider-soft {
+            height: 1px;
+            width: 80px;
+            background: linear-gradient(to right, transparent, #B8941F, transparent);
+            opacity: 0.6;
+        }
+
+        .glass-pill {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+        }
+
+        .glass-modal {
+            background: rgba(253, 251, 247, 0.96);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            box-shadow: 0 20px 50px 0 rgba(0, 0, 0, 0.35);
+            color: #2C2623;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, #D4AF37, #B8941F);
+            color: #fff;
+            box-shadow: 0 6px 18px rgba(184, 148, 31, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-gold:hover {
+            filter: brightness(1.1);
+        }
+
+        .btn-gold:active {
+            transform: scale(0.97);
+        }
+
+        .safe-pad {
+            padding-top: env(safe-area-inset-top, 0);
+            padding-bottom: env(safe-area-inset-bottom, 0);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen relative safe-pad">
+
+    <div class="video-container">
+        <canvas id="fallbackCanvas" class="hidden"></canvas>
+        <video id="bgVideo" autoplay muted playsinline webkit-playsinline preload="metadata"
+            poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'><rect width='1' height='1' fill='%231a1512'/></svg>">
+            <source
+                src="https://res.cloudinary.com/jhmk0bw2/video/upload/q_auto,f_auto,vc_auto/v1791152140/bg-video.mp4"
+                type="video/mp4">
+        </video>
+    </div>
+
+    <div class="fixed top-3 left-3 z-50 flex items-center gap-2 glass-pill px-2 py-1.5 rounded-full shadow-lg">
+        <button id="toggleAudioBtn" onclick="toggleAudio()"
+            class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full bg-white/80 text-vintageDark hover:bg-gold hover:text-white transition-all shadow">
+            <i class="fas fa-volume-mute text-xs sm:text-sm" id="audioIcon"></i>
+        </button>
+        <button onclick="openVideoModal()"
+            class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full bg-white/80 text-vintageDark hover:bg-gold hover:text-white transition-all shadow">
+            <i class="fas fa-video text-xs sm:text-sm"></i>
+        </button>
+        <button onclick="toggleFullscreen()"
+            class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full bg-white/80 text-vintageDark hover:bg-gold hover:text-white transition-all shadow">
+            <i class="fas fa-expand text-xs sm:text-sm"></i>
+        </button>
+    </div>
+
+    <audio id="bgAudio" loop preload="auto">
+        <source
+            src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-piano-112188.mp3"
+            type="audio/mpeg">
+    </audio>
+
+    <div class="text-area">
+
+        <!-- المشهد 1 -->
+        <div id="step1"
+            class="scene-fade scene-visible w-full flex flex-col items-center justify-center gap-5 absolute inset-0">
+            <div id="dateLine" class="grow-in date-classic text-3xl sm:text-4xl">
+                11.11.2026
+            </div>
+
+            <div id="namesArScene1"
+                class="font-amiri text-2xl sm:text-3xl gold-text font-bold opacity-0 transition-opacity duration-[1800ms] ease-in-out">
+                براء &amp; سلمي
+            </div>
+        </div>
+
+        <!-- المشهد 2 (الأخير) -->
+        <div id="step2"
+            class="scene-fade scene-hidden w-full flex flex-col items-center justify-center gap-3 absolute inset-0">
+            <div id="basmalaLine" class="font-amiri text-2xl sm:text-3xl gold-text font-bold"></div>
+
+            <div class="divider-soft opacity-0" id="divider2"></div>
+
+            <div id="poemLine1" class="font-amiri text-base sm:text-lg rose-text leading-relaxed"></div>
+            <div id="poemLine2" class="font-amiri text-base sm:text-lg rose-text leading-relaxed"></div>
+
+            <div class="divider-soft opacity-0" id="divider3"></div>
+
+            <div id="lastLine" class="font-kufi text-xs sm:text-sm brown-text leading-relaxed px-2"></div>
+
+            <div id="namesEnScene2"
+                class="font-vibes text-4xl sm:text-5xl gold-deep-shine opacity-0 transition-all duration-[2500ms] ease-in-out mt-2"
+                style="transform: translateY(10px);">
+                Baraa &amp; Salma
+            </div>
+
+            <div id="locationTimeBox"
+                class="flex justify-center items-stretch gap-3 sm:gap-4 mt-1 opacity-0 transition-opacity duration-1000">
+
+                <a href="https://maps.app.goo.gl/BVpCxoaWcJ4Twwa79?g_st=iw" target="_blank" rel="noopener"
+                    class="flex flex-col items-center gap-0.5 px-3 py-2 rounded-xl border border-gold/30 active:scale-95 transition-all"
+                    style="background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
+                    <i class="fas fa-map-marker-alt text-gold text-lg sm:text-xl"></i>
+                    <span class="text-[9px] sm:text-[10px] font-semibold rose-text whitespace-nowrap">قاعة DABA</span>
+                </a>
+
+                <div class="flex flex-col items-center gap-0.5 px-3 py-2 rounded-xl border border-gold/30"
+                    style="background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
+                    <i class="far fa-clock text-gold text-lg sm:text-xl"></i>
+                    <span class="text-[9px] sm:text-[10px] font-semibold rose-text whitespace-nowrap" dir="ltr">8:00 -
+                        11:30</span>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- RSVP Modal -->
+    <div id="rsvpModal"
+        class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="glass-modal w-full max-w-md rounded-2xl p-5 sm:p-6 relative animate-fade-in text-right">
+            <button onclick="closeRSVPModal()"
+                class="absolute top-3 left-3 text-vintageDark/60 hover:text-vintageDark w-8 h-8 flex items-center justify-center">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+            <h3 class="font-kufi text-lg sm:text-xl font-bold text-vintageDark mb-1 border-b border-gold/30 pb-2">تأكيد
+                الحضور</h3>
+            <p class="text-[11px] sm:text-xs text-deepRose mb-4">يسعدنا معرفة حضوركم لترتيب الاستقبال بشكل يليق بكم.</p>
+            <form id="rsvpForm" onsubmit="handleRSVP(event)" class="space-y-3.5">
+                <div>
+                    <label class="block text-[11px] sm:text-xs font-semibold text-vintageDark mb-1">الاسم الكريم</label>
+                    <input type="text" id="guestName" required placeholder="أدخل اسمك هنا"
+                        class="w-full px-3 py-2.5 rounded-xl bg-cream border border-gold/40 text-sm focus:outline-none focus:ring-2 focus:ring-gold text-vintageDark">
+                </div>
+                <div>
+                    <label class="block text-[11px] sm:text-xs font-semibold text-vintageDark mb-1">حالة الحضور</label>
+                    <select id="attendanceStatus"
+                        class="w-full px-3 py-2.5 rounded-xl bg-cream border border-gold/40 text-sm focus:outline-none focus:ring-2 focus:ring-gold text-vintageDark">
+                        <option value="attending">يشرفني الحضور بكل حب ✨</option>
+                        <option value="apologize">أعتذر عن الحضور مع أطيب الامنيات 🙏</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-[11px] sm:text-xs font-semibold text-vintageDark mb-1">عدد
+                        المرافقين</label>
+                    <input type="number" id="guestCount" min="1" max="10" value="1"
+                        class="w-full px-3 py-2.5 rounded-xl bg-cream border border-gold/40 text-sm focus:outline-none focus:ring-2 focus:ring-gold text-vintageDark">
+                </div>
+                <button type="submit"
+                    class="w-full py-2.5 rounded-xl bg-gold text-white font-bold text-sm hover:bg-amber-600 transition shadow">
+                    إرسال التأكيد
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div id="videoModal"
+        class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="glass-modal w-full max-w-md rounded-2xl p-5 sm:p-6 relative text-right">
+            <button onclick="closeVideoModal()"
+                class="absolute top-3 left-3 text-vintageDark/60 hover:text-vintageDark w-8 h-8 flex items-center justify-center">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+            <h3 class="font-kufi text-lg sm:text-xl font-bold text-vintageDark mb-2 border-b border-gold/30 pb-2">تخصيص
+                خلفية الدعوة</h3>
+            <p class="text-[11px] sm:text-xs text-vintageDark/80 mb-4">يمكنك رفع فيديو من جهازك ليظهر كخلفية متناسقة
+                للدعوة.</p>
+            <div class="space-y-4">
+                <div class="border-2 border-dashed border-gold/50 rounded-2xl p-6 text-center bg-cream/60 hover:bg-cream/90 transition cursor-pointer"
+                    onclick="document.getElementById('videoInput').click()">
+                    <i class="fas fa-cloud-upload-alt text-3xl text-gold mb-2"></i>
+                    <p class="text-xs font-bold text-vintageDark">اضغط هنا لاختيار فيديو من جهازك</p>
+                    <p class="text-[10px] text-vintageDark/60 mt-1">يدعم صيغ MP4, WebM</p>
+                    <input type="file" id="videoInput" accept="video/*" class="hidden"
+                        onchange="handleVideoUpload(event)">
+                </div>
+                <div class="flex justify-between items-center text-[11px] sm:text-xs text-vintageDark pt-2">
+                    <span>أو استخدم الخلفية الافتراضية:</span>
+                    <button onclick="resetDefaultVideo()" class="text-gold underline font-bold">إعادة الضبط</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast"
+        class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 glass-pill px-4 py-2.5 rounded-2xl text-[11px] sm:text-xs font-bold text-vintageDark shadow-2xl transition-all duration-300 opacity-0 pointer-events-none transform translate-y-4 flex items-center gap-2 max-w-[90vw]">
+        <i class="fas fa-check-circle text-gold text-base" id="toastIcon"></i>
+        <span id="toastMessage">تم الحفظ بنجاح</span>
+    </div>
+
+    <script>
+        let isAudioPlaying = false;
+        let sceneTimers = [];
+
+        const SCENE1_DURATION = 7000;
+
+        function typeText(el, text, speed = 60, callback) {
+            el.textContent = '';
+            el.classList.add('cursor');
+            let i = 0;
+            function typeChar() {
+                if (i < text.length) {
+                    el.textContent += text.charAt(i);
+                    i++;
+                    const t = setTimeout(typeChar, speed);
+                    sceneTimers.push(t);
+                } else {
+                    el.classList.remove('cursor');
+                    if (callback) callback();
+                }
+            }
+            typeChar();
+        }
+
+        function clearSceneTimers() {
+            sceneTimers.forEach(t => clearTimeout(t));
+            sceneTimers = [];
+        }
+
+        function hideElement(el) {
+            el.classList.add('opacity-0');
+            el.classList.remove('opacity-100');
+        }
+
+        function transitionToScene(fromNum, toNum) {
+            const fromEl = document.getElementById(`step${fromNum}`);
+            const toEl = document.getElementById(`step${toNum}`);
+
+            if (fromEl) {
+                fromEl.classList.add('scene-hidden');
+                fromEl.classList.remove('scene-visible');
+            }
+
+            const t = setTimeout(() => {
+                if (toEl) {
+                    toEl.classList.remove('scene-hidden');
+                    toEl.classList.add('scene-visible');
+                }
+            }, 700);
+            sceneTimers.push(t);
+        }
+
+        function resetScene1() {
+            const dateLine = document.getElementById('dateLine');
+            const namesAr = document.getElementById('namesArScene1');
+            dateLine.classList.remove('visible');
+            namesAr.classList.add('opacity-0');
+            namesAr.classList.remove('opacity-100');
+        }
+
+        function resetScene2() {
+            const ids = ['basmalaLine', 'poemLine1', 'poemLine2', 'lastLine'];
+            ids.forEach(id => {
+                const el = document.getElementById(id);
+                el.textContent = '';
+                el.classList.remove('cursor');
+            });
+            hideElement(document.getElementById('divider2'));
+            hideElement(document.getElementById('divider3'));
+            const namesEn = document.getElementById('namesEnScene2');
+            namesEn.classList.add('opacity-0');
+            namesEn.classList.remove('opacity-100');
+            namesEn.style.transform = 'translateY(10px)';
+
+            hideElement(document.getElementById('locationTimeBox'));
+        }
+
+        function playScene1(onDone) {
+            resetScene1();
+
+            const dateLine = document.getElementById('dateLine');
+            const namesAr = document.getElementById('namesArScene1');
+
+            const t1 = setTimeout(() => {
+                dateLine.classList.add('visible');
+            }, 300);
+            sceneTimers.push(t1);
+
+            const t2 = setTimeout(() => {
+                namesAr.classList.remove('opacity-0');
+                namesAr.classList.add('opacity-100');
+            }, 2500);
+            sceneTimers.push(t2);
+
+            const t3 = setTimeout(onDone, SCENE1_DURATION);
+            sceneTimers.push(t3);
+        }
+
+        function playScene2(onDone) {
+            resetScene2();
+
+            const basmala = document.getElementById('basmalaLine');
+            const d2 = document.getElementById('divider2');
+            const poem1 = document.getElementById('poemLine1');
+            const poem2 = document.getElementById('poemLine2');
+            const d3 = document.getElementById('divider3');
+            const lastLine = document.getElementById('lastLine');
+            const namesEn = document.getElementById('namesEnScene2');
+            const locBox = document.getElementById('locationTimeBox');
+
+            typeText(basmala, 'بِسمِ اللهِ الرَّحمٰنِ الرَّحِيمِ', 70, () => {
+                const t1 = setTimeout(() => {
+                    d2.classList.remove('opacity-0');
+                    d2.classList.add('opacity-100');
+
+                    const t2 = setTimeout(() => {
+                        typeText(poem1, 'قَد جَادَ رَبِّي بِالهَنَاءِ، وَأَكْرَمْ', 60, () => {
+                            typeText(poem2, 'وَالقَلْبُ أَصْبَحَ بِالمَسَرَّةِ بَاسِمَا', 60, () => {
+                                const t3 = setTimeout(() => {
+                                    d3.classList.remove('opacity-0');
+                                    d3.classList.add('opacity-100');
+
+                                    const t4 = setTimeout(() => {
+                                        typeText(lastLine, 'بِكُلِّ الحُبِّ نَدْعُوكُمْ لِمُشَارَكَتِنَا لَيْلَةَ العُمْرِ', 55, () => {
+                                            const t5 = setTimeout(() => {
+                                                namesEn.style.transform = 'translateY(0)';
+                                                namesEn.classList.remove('opacity-0');
+                                                namesEn.classList.add('opacity-100');
+
+                                                const t6 = setTimeout(() => {
+                                                    locBox.classList.remove('opacity-0');
+                                                    locBox.classList.add('opacity-100');
+
+                                                    if (onDone) onDone();
+                                                }, 1000);
+                                                sceneTimers.push(t6);
+                                            }, 700);
+                                            sceneTimers.push(t5);
+                                        });
+                                    }, 400);
+                                    sceneTimers.push(t4);
+                                }, 300);
+                                sceneTimers.push(t3);
+                            });
+                        });
+                    }, 400);
+                    sceneTimers.push(t2);
+                }, 500);
+                sceneTimers.push(t1);
+            });
+        }
+
+        function startShow() {
+            clearSceneTimers();
+
+            playScene1(() => {
+                transitionToScene(1, 2);
+
+                const t = setTimeout(() => {
+                    playScene2(() => {
+                        // المشهد الأخير — يتوقف هنا
+                    });
+                }, 800);
+                sceneTimers.push(t);
+            });
+        }
+
+        window.addEventListener('load', function () {
+            initVideoHandling();
+            startShow();
+
+            const bgVideo = document.getElementById('bgVideo');
+            bgVideo.addEventListener('ended', function () {
+                bgVideo.pause();
+            });
+
+            document.body.addEventListener('click', function autoPlayOnce() {
+                if (!isAudioPlaying) toggleAudio(true);
+                document.body.removeEventListener('click', autoPlayOnce);
+            }, { once: true });
+        });
+
+        function initVideoHandling() {
+            const canvas = document.getElementById('fallbackCanvas');
+            const video = document.getElementById('bgVideo');
+            video.addEventListener('error', function () {
+                video.classList.add('hidden');
+                canvas.classList.remove('hidden');
+                startParticles(canvas);
+            });
+        }
+
+        function startParticles(canvas) {
+            const ctx = canvas.getContext('2d');
+            let width = canvas.width = window.innerWidth;
+            let height = canvas.height = window.innerHeight;
+            window.addEventListener('resize', () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            });
+            const particles = [];
+            for (let i = 0; i < 45; i++) {
+                particles.push({ x: Math.random() * width, y: Math.random() * height, r: Math.random() * 2.5 + 0.8, d: Math.random() * 0.8 + 0.15 });
+            }
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+                let grad = ctx.createLinearGradient(0, 0, 0, height);
+                grad.addColorStop(0, '#2b2320'); grad.addColorStop(1, '#151211');
+                ctx.fillStyle = grad; ctx.fillRect(0, 0, width, height);
+                ctx.beginPath();
+                for (let i = 0; i < particles.length; i++) {
+                    const p = particles[i];
+                    ctx.moveTo(p.x, p.y);
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, true);
+                    p.y -= p.d;
+                    if (p.y < 0) { p.y = height; p.x = Math.random() * width; }
+                }
+                ctx.fillStyle = 'rgba(212, 175, 55, 0.45)';
+                ctx.fill();
+                requestAnimationFrame(draw);
+            }
+            draw();
+        }
+
+        function toggleAudio(forcePlay = false) {
+            const audio = document.getElementById('bgAudio');
+            const icon = document.getElementById('audioIcon');
+            const btn = document.getElementById('toggleAudioBtn');
+            if (audio.paused || forcePlay) {
+                audio.play().then(() => {
+                    isAudioPlaying = true;
+                    icon.className = 'fas fa-music text-gold animate-bounce text-xs sm:text-sm';
+                    btn.classList.add('border-gold');
+                    showToast('تم تشغيل الموسيقى المصاحبة 🎵');
+                }).catch(() => { });
+            } else {
+                audio.pause();
+                isAudioPlaying = false;
+                icon.className = 'fas fa-volume-mute text-xs sm:text-sm';
+                btn.classList.remove('border-gold');
+            }
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(() => { });
+            else if (document.exitFullscreen) document.exitFullscreen();
+        }
+
+        function openVideoModal() { document.getElementById('videoModal').classList.remove('hidden'); }
+        function closeVideoModal() { document.getElementById('videoModal').classList.add('hidden'); }
+
+        function handleVideoUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const videoURL = URL.createObjectURL(file);
+                const bgVideo = document.getElementById('bgVideo');
+                bgVideo.src = videoURL;
+                bgVideo.load();
+                bgVideo.play().catch(() => { });
+                document.getElementById('fallbackCanvas').classList.add('hidden');
+                bgVideo.classList.remove('hidden');
+                closeVideoModal();
+                showToast('تم تحديث فيديو الخلفية بنجاح! ✨');
+            }
+        }
+
+        function resetDefaultVideo() {
+            const bgVideo = document.getElementById('bgVideo');
+            bgVideo.src = 'https://res.cloudinary.com/jhmk0bw2/video/upload/q_auto,f_auto,vc_auto/v1791152140/bg-video.mp4';
+            bgVideo.load();
+            bgVideo.play().catch(() => { });
+            closeVideoModal();
+            showToast('تمت إعادة الخلفية الافتراضية');
+        }
+
+        function openRSVPModal() {
+            document.getElementById('rsvpModal').classList.remove('hidden');
+        }
+
+        function closeRSVPModal() {
+            document.getElementById('rsvpModal').classList.add('hidden');
+        }
+
+        function handleRSVP(e) {
+            e.preventDefault();
+            const name = document.getElementById('guestName').value;
+            const status = document.getElementById('attendanceStatus').value;
+            closeRSVPModal();
+            if (status === 'attending') showToast(`شكراً لك ${name}! تم تسجيل حضورك 🎉`);
+            else showToast(`شكراً لك ${name}. نقدّر اعتذارك ❤️`);
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = msg;
+            toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+            toast.classList.add('opacity-100', 'translate-y-0');
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+            }, 3500);
+        }
+    </script>
+</body>
+
+</html>
