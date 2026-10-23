@@ -296,26 +296,21 @@
         </video>
     </div>
 
-    <div class="fixed top-3 left-3 z-50 flex items-center gap-2 glass-pill px-2 py-1.5 rounded-full shadow-lg">
-        <button id="toggleAudioBtn" onclick="toggleAudio()"
-            class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full bg-white/80 text-vintageDark hover:bg-gold hover:text-white transition-all shadow">
-            <i class="fas fa-volume-mute text-xs sm:text-sm" id="audioIcon"></i>
-        </button>
-        <button onclick="openVideoModal()"
-            class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full bg-white/80 text-vintageDark hover:bg-gold hover:text-white transition-all shadow">
-            <i class="fas fa-video text-xs sm:text-sm"></i>
-        </button>
-        <button onclick="toggleFullscreen()"
-            class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full bg-white/80 text-vintageDark hover:bg-gold hover:text-white transition-all shadow">
-            <i class="fas fa-expand text-xs sm:text-sm"></i>
-        </button>
-    </div>
-
     <audio id="bgAudio" loop preload="auto">
         <source
             src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-piano-112188.mp3"
             type="audio/mpeg">
     </audio>
+
+    <!-- زر فتح الدعوة -->
+    <div id="openInvitationOverlay"
+        class="fixed inset-0 z-40 flex items-center justify-center bg-[#1a1512]/60 backdrop-blur-sm transition-opacity duration-700">
+        <button onclick="openInvitation()"
+            class="btn-gold px-10 py-4 rounded-full font-kufi text-lg sm:text-xl font-bold tracking-wide flex items-center gap-3 shadow-2xl animate-pulse">
+            <i class="fas fa-envelope-open-text text-xl"></i>
+            افتح الدعوة
+        </button>
+    </div>
 
     <div class="text-area">
 
@@ -410,35 +405,6 @@
                     إرسال التأكيد
                 </button>
             </form>
-        </div>
-    </div>
-
-    <!-- Video Modal -->
-    <div id="videoModal"
-        class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="glass-modal w-full max-w-md rounded-2xl p-5 sm:p-6 relative text-right">
-            <button onclick="closeVideoModal()"
-                class="absolute top-3 left-3 text-vintageDark/60 hover:text-vintageDark w-8 h-8 flex items-center justify-center">
-                <i class="fas fa-times text-lg"></i>
-            </button>
-            <h3 class="font-kufi text-lg sm:text-xl font-bold text-vintageDark mb-2 border-b border-gold/30 pb-2">تخصيص
-                خلفية الدعوة</h3>
-            <p class="text-[11px] sm:text-xs text-vintageDark/80 mb-4">يمكنك رفع فيديو من جهازك ليظهر كخلفية متناسقة
-                للدعوة.</p>
-            <div class="space-y-4">
-                <div class="border-2 border-dashed border-gold/50 rounded-2xl p-6 text-center bg-cream/60 hover:bg-cream/90 transition cursor-pointer"
-                    onclick="document.getElementById('videoInput').click()">
-                    <i class="fas fa-cloud-upload-alt text-3xl text-gold mb-2"></i>
-                    <p class="text-xs font-bold text-vintageDark">اضغط هنا لاختيار فيديو من جهازك</p>
-                    <p class="text-[10px] text-vintageDark/60 mt-1">يدعم صيغ MP4, WebM</p>
-                    <input type="file" id="videoInput" accept="video/*" class="hidden"
-                        onchange="handleVideoUpload(event)">
-                </div>
-                <div class="flex justify-between items-center text-[11px] sm:text-xs text-vintageDark pt-2">
-                    <span>أو استخدم الخلفية الافتراضية:</span>
-                    <button onclick="resetDefaultVideo()" class="text-gold underline font-bold">إعادة الضبط</button>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -615,19 +581,28 @@
             });
         }
 
+        function openInvitation() {
+            // إخفاء طبقة زر الفتح
+            const overlay = document.getElementById('openInvitationOverlay');
+            overlay.classList.add('opacity-0', 'pointer-events-none');
+            setTimeout(() => overlay.remove(), 700);
+
+            // تشغيل الصوت
+            toggleAudio(true);
+
+            // بدء العرض
+            startShow();
+        }
+
         window.addEventListener('load', function () {
             initVideoHandling();
-            startShow();
 
             const bgVideo = document.getElementById('bgVideo');
             bgVideo.addEventListener('ended', function () {
                 bgVideo.pause();
             });
 
-            document.body.addEventListener('click', function autoPlayOnce() {
-                if (!isAudioPlaying) toggleAudio(true);
-                document.body.removeEventListener('click', autoPlayOnce);
-            }, { once: true });
+            // لا يبدأ العرض ولا الصوت تلقائياً — ينتظر ضغط زر "افتح الدعوة"
         });
 
         function initVideoHandling() {
@@ -674,56 +649,14 @@
 
         function toggleAudio(forcePlay = false) {
             const audio = document.getElementById('bgAudio');
-            const icon = document.getElementById('audioIcon');
-            const btn = document.getElementById('toggleAudioBtn');
             if (audio.paused || forcePlay) {
                 audio.play().then(() => {
                     isAudioPlaying = true;
-                    icon.className = 'fas fa-music text-gold animate-bounce text-xs sm:text-sm';
-                    btn.classList.add('border-gold');
                 }).catch(() => { });
             } else {
                 audio.pause();
                 isAudioPlaying = false;
-                icon.className = 'fas fa-volume-mute text-xs sm:text-sm';
-                btn.classList.remove('border-gold');
             }
-        }
-
-        function toggleFullscreen() {
-            if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(() => { });
-            else if (document.exitFullscreen) document.exitFullscreen();
-        }
-
-        function openVideoModal() { document.getElementById('videoModal').classList.remove('hidden'); }
-        function closeVideoModal() { document.getElementById('videoModal').classList.add('hidden'); }
-
-        function handleVideoUpload(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const videoURL = URL.createObjectURL(file);
-                const bgVideo = document.getElementById('bgVideo');
-                bgVideo.src = videoURL;
-                bgVideo.load();
-                bgVideo.play().catch(() => { });
-                document.getElementById('fallbackCanvas').classList.add('hidden');
-                bgVideo.classList.remove('hidden');
-                closeVideoModal();
-                showToast('تم تحديث فيديو الخلفية بنجاح! ✨');
-            }
-        }
-
-        function resetDefaultVideo() {
-            const bgVideo = document.getElementById('bgVideo');
-            bgVideo.src = 'https://res.cloudinary.com/jhmk0bw2/video/upload/q_auto,f_auto,vc_auto/v1791152140/bg-video.mp4';
-            bgVideo.load();
-            bgVideo.play().catch(() => { });
-            closeVideoModal();
-            showToast('تمت إعادة الخلفية الافتراضية');
-        }
-
-        function openRSVPModal() {
-            document.getElementById('rsvpModal').classList.remove('hidden');
         }
 
         function closeRSVPModal() {
