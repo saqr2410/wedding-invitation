@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#1a1512">
-    <title> Baraa & Salma</title>
+    <title>Baraa & Salma</title>
 
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
     <link rel="dns-prefetch" href="https://res.cloudinary.com">
@@ -143,6 +143,45 @@
 
             100% {
                 background-position: 200% center;
+            }
+        }
+
+        /* اسم العروسين — تصميم فاخر */
+        .name-luxury {
+            background: linear-gradient(120deg,
+                    #8B6F1A 0%,
+                    #C9A227 20%,
+                    #F4E5A1 40%,
+                    #D4AF37 55%,
+                    #F4E5A1 70%,
+                    #C9A227 85%,
+                    #8B6F1A 100%);
+            background-size: 250% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: #8B6F1A;
+            filter:
+                drop-shadow(0 1px 1px rgba(0, 0, 0, 0.3)) drop-shadow(0 3px 10px rgba(184, 148, 31, 0.45));
+            animation: nameShine 6s linear infinite;
+            letter-spacing: 0.02em;
+        }
+
+        .name-luxury .amp {
+            font-family: 'Great Vibes', cursive;
+            font-size: 0.85em;
+            display: inline-block;
+            padding: 0 0.15em;
+            vertical-align: middle;
+        }
+
+        @keyframes nameShine {
+            0% {
+                background-position: 0% center;
+            }
+
+            100% {
+                background-position: 250% center;
             }
         }
 
@@ -301,14 +340,11 @@
     <div id="openInvitationOverlay"
         class="fixed inset-0 z-40 flex items-center justify-center transition-opacity duration-700 bg-[#1a1512]">
 
-        <!-- الصورة كاملة ومركزة — تظبط على أي شاشة -->
         <img src="https://res.cloudinary.com/jhmk0bw2/image/upload/v1792828345/Gemini_Generated_Image_97xhf97xhf97xhf9.jpg"
             alt="Baraa & Salma" class="absolute inset-0 w-full h-full object-contain p-2 sm:p-4">
 
-        <!-- طبقة تعتيم خفيفة -->
         <div class="absolute inset-0 bg-black/25"></div>
 
-        <!-- الزرار الشفاف في النص -->
         <button onclick="openInvitation()"
             class="relative z-10 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-kufi text-base sm:text-xl font-bold tracking-wide flex items-center gap-3 shadow-2xl animate-pulse backdrop-blur-sm border-2 border-white/90 text-white bg-white/15 hover:bg-white/25 active:scale-95 transition-all">
             <i class="fas fa-envelope-open-text text-lg sm:text-xl"></i>
@@ -318,16 +354,50 @@
 
     <div class="text-area">
 
-        <!-- المشهد 1 -->
+        <!-- المشهد 1 — بدون إطار -->
         <div id="step1"
-            class="scene-fade scene-visible w-full flex flex-col items-center justify-center gap-6 absolute inset-0">
-            <div id="dateLine" class="grow-in date-classic text-4xl sm:text-5xl">
-                11.11.2026
-            </div>
+            class="scene-fade scene-visible w-full flex flex-col items-center justify-center absolute inset-0 px-6">
 
-            <div id="namesArScene1"
-                class="font-amiri text-3xl sm:text-4xl gold-text font-bold opacity-0 transition-opacity duration-[1800ms] ease-in-out">
-                Baraa &amp; Salma
+            <div class="flex flex-col items-center justify-center gap-4 sm:gap-5 w-full max-w-sm">
+
+                <!-- زخرفة علوية -->
+                <div class="flex items-center gap-3 w-full justify-center">
+                    <div class="h-px flex-1 bg-gradient-to-l from-transparent via-gold/60 to-gold/60"></div>
+                    <i class="fas fa-heart text-gold text-xs sm:text-sm animate-pulse"></i>
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-gold/60 to-gold/60"></div>
+                </div>
+
+                <!-- سطر تمهيدي -->
+                <p class="font-kufi text-[10px] sm:text-xs tracking-[0.35em] text-warmBrown/90 uppercase">
+                    Save the Date
+                </p>
+
+                <!-- التاريخ -->
+                <div id="dateLine" class="grow-in date-classic text-4xl sm:text-5xl font-semibold">
+                    11.11.2026
+                </div>
+
+                <!-- فاصل ذهبي -->
+                <div class="divider-soft"></div>
+
+                <!-- اسم العروسين بالعربي — أشيك -->
+                <div id="namesArScene1"
+                    class="name-luxury font-amiri text-4xl sm:text-5xl font-bold opacity-0 transition-opacity duration-[1800ms] ease-in-out leading-relaxed">
+                    براء <span class="amp">&amp;</span> سلمي
+                </div>
+
+                <!-- الاسم بالإنجليزي -->
+                <div class="font-vibes text-2xl sm:text-3xl text-warmBrown/85">
+                    Baraa &amp; Salma
+                </div>
+
+                <!-- زخرفة سفلية -->
+                <div class="flex items-center gap-3 w-full justify-center">
+                    <div class="h-px flex-1 bg-gradient-to-l from-transparent via-gold/60 to-gold/60"></div>
+                    <i class="fas fa-ring text-gold text-xs sm:text-sm"></i>
+                    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-gold/60 to-gold/60"></div>
+                </div>
+
             </div>
         </div>
 
