@@ -165,20 +165,6 @@
             text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
         }
 
-        .step-transition {
-            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .fade-enter {
-            opacity: 0;
-            transform: translateY(15px);
-        }
-
-        .fade-active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         .scene-fade {
             transition: opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1),
                 transform 1.4s cubic-bezier(0.4, 0, 0.2, 1),
@@ -297,7 +283,6 @@
 
     <div class="video-container">
         <canvas id="fallbackCanvas" class="hidden"></canvas>
-        <!-- الفيديو بدون autoplay — لن يعمل إلا بعد الضغط على الزر -->
         <video id="bgVideo" muted playsinline webkit-playsinline preload="metadata"
             poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'><rect width='1' height='1' fill='%231a1512'/></svg>">
             <source
@@ -312,18 +297,21 @@
             type="audio/mpeg">
     </audio>
 
-    <!-- زر فتح الدعوة — الصورة تملأ الشاشة والزرار شفاف فوقها -->
+    <!-- زر فتح الدعوة — الصورة تظبط على الموبايل والتابلت -->
     <div id="openInvitationOverlay"
-        class="fixed inset-0 z-40 flex items-center justify-center transition-opacity duration-700"
-        style="background-image: url('https://res.cloudinary.com/jhmk0bw2/image/upload/v1792753717/Screenshot_2026-01-31_220334.png'); background-size: cover; background-position: center; background-repeat: no-repeat; background-color: #1a1512;">
+        class="fixed inset-0 z-40 flex items-center justify-center transition-opacity duration-700 bg-[#1a1512]">
 
-        <!-- طبقة تعتيم خفيفة عشان الزرار يبان -->
-        <div class="absolute inset-0 bg-black/30"></div>
+        <!-- الصورة كاملة ومركزة — تظبط على أي شاشة -->
+        <img src="https://res.cloudinary.com/jhmk0bw2/image/upload/v1792828345/Gemini_Generated_Image_97xhf97xhf97xhf9.jpg"
+            alt="Baraa & Salma" class="absolute inset-0 w-full h-full object-contain p-2 sm:p-4">
+
+        <!-- طبقة تعتيم خفيفة -->
+        <div class="absolute inset-0 bg-black/25"></div>
 
         <!-- الزرار الشفاف في النص -->
         <button onclick="openInvitation()"
-            class="relative z-10 px-10 py-4 rounded-full font-kufi text-lg sm:text-xl font-bold tracking-wide flex items-center gap-3 shadow-2xl animate-pulse backdrop-blur-sm border-2 border-white/90 text-white bg-white/15 hover:bg-white/25 active:scale-95 transition-all">
-            <i class="fas fa-envelope-open-text text-xl"></i>
+            class="relative z-10 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-kufi text-base sm:text-xl font-bold tracking-wide flex items-center gap-3 shadow-2xl animate-pulse backdrop-blur-sm border-2 border-white/90 text-white bg-white/15 hover:bg-white/25 active:scale-95 transition-all">
+            <i class="fas fa-envelope-open-text text-lg sm:text-xl"></i>
             افتح الدعوة
         </button>
     </div>
@@ -339,44 +327,44 @@
 
             <div id="namesArScene1"
                 class="font-amiri text-3xl sm:text-4xl gold-text font-bold opacity-0 transition-opacity duration-[1800ms] ease-in-out">
-                براء &amp; سلمي
+                Baraa &amp; Salma
             </div>
         </div>
 
         <!-- المشهد 2 (الأخير) -->
         <div id="step2"
             class="scene-fade scene-hidden w-full flex flex-col items-center justify-center gap-4 absolute inset-0">
-            <div id="basmalaLine" class="font-amiri text-3xl sm:text-4xl gold-text font-bold"></div>
+            <div id="basmalaLine" class="font-amiri text-2xl sm:text-4xl gold-text font-bold"></div>
 
             <div class="divider-soft opacity-0" id="divider2"></div>
 
-            <div id="poemLine1" class="font-amiri text-lg sm:text-xl rose-text leading-relaxed"></div>
-            <div id="poemLine2" class="font-amiri text-lg sm:text-xl rose-text leading-relaxed"></div>
+            <div id="poemLine1" class="font-amiri text-base sm:text-xl rose-text leading-relaxed"></div>
+            <div id="poemLine2" class="font-amiri text-base sm:text-xl rose-text leading-relaxed"></div>
 
             <div class="divider-soft opacity-0" id="divider3"></div>
 
-            <div id="lastLine" class="font-kufi text-base sm:text-lg brown-text leading-relaxed px-2"></div>
+            <div id="lastLine" class="font-kufi text-sm sm:text-lg brown-text leading-relaxed px-2"></div>
 
             <div id="namesEnScene2"
-                class="font-vibes text-5xl sm:text-6xl gold-deep-shine opacity-0 transition-all duration-[2500ms] ease-in-out mt-3"
+                class="font-vibes text-4xl sm:text-6xl gold-deep-shine opacity-0 transition-all duration-[2500ms] ease-in-out mt-3"
                 style="transform: translateY(10px);">
                 Baraa &amp; Salma
             </div>
 
             <div id="locationTimeBox"
-                class="flex justify-center items-stretch gap-3 sm:gap-4 mt-2 opacity-0 transition-opacity duration-1000">
+                class="flex justify-center items-stretch gap-2 sm:gap-4 mt-2 opacity-0 transition-opacity duration-1000">
 
                 <a href="https://maps.app.goo.gl/BVpCxoaWcJ4Twwa79?g_st=iw" target="_blank" rel="noopener"
-                    class="flex flex-col items-center gap-1 px-4 py-2.5 rounded-xl border border-gold/30 active:scale-95 transition-all"
+                    class="flex flex-col items-center gap-1 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-gold/30 active:scale-95 transition-all"
                     style="background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
-                    <i class="fas fa-map-marker-alt text-gold text-xl sm:text-2xl"></i>
-                    <span class="text-xs sm:text-sm font-semibold rose-text whitespace-nowrap">قاعة DABA</span>
+                    <i class="fas fa-map-marker-alt text-gold text-lg sm:text-2xl"></i>
+                    <span class="text-[10px] sm:text-sm font-semibold rose-text whitespace-nowrap">قاعة DABA</span>
                 </a>
 
-                <div class="flex flex-col items-center gap-1 px-4 py-2.5 rounded-xl border border-gold/30"
+                <div class="flex flex-col items-center gap-1 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-gold/30"
                     style="background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
-                    <i class="far fa-clock text-gold text-xl sm:text-2xl"></i>
-                    <span class="text-xs sm:text-sm font-semibold rose-text whitespace-nowrap" dir="ltr">8:00 -
+                    <i class="far fa-clock text-gold text-lg sm:text-2xl"></i>
+                    <span class="text-[10px] sm:text-sm font-semibold rose-text whitespace-nowrap" dir="ltr">8:00 -
                         11:30</span>
                 </div>
 
@@ -598,20 +586,15 @@
         }
 
         function openInvitation() {
-            // إخفاء طبقة زر الفتح
             const overlay = document.getElementById('openInvitationOverlay');
             overlay.classList.add('opacity-0', 'pointer-events-none');
             setTimeout(() => overlay.remove(), 700);
 
-            // تشغيل الفيديو
             const bgVideo = document.getElementById('bgVideo');
             bgVideo.muted = true;
             bgVideo.play().catch(() => { });
 
-            // تشغيل الصوت
             toggleAudio(true);
-
-            // بدء العرض
             startShow();
         }
 
@@ -623,7 +606,6 @@
                 bgVideo.pause();
             });
 
-            // الفيديو لا يبدأ تلقائياً — ينتظر ضغط الزر
             bgVideo.pause();
         });
 
